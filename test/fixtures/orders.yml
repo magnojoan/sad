@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  invoice_no: 1
+  purchase_order_no: 1
+  date: 2013-04-09
+  terms: MyString
+  subtotal: 9.99
+  vatable_amount: 9.99
+  total: 9.99
+
+two:
+  invoice_no: 1
+  purchase_order_no: 1
+  date: 2013-04-09
+  terms: MyString
+  subtotal: 9.99
+  vatable_amount: 9.99
+  total: 9.99

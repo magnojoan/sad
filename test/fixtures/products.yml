@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product_code: MyString
+  product_version: 1
+  product_name: MyString
+  reorder_level: 9.99
+  is_enabled: false
+  effective_date: 2013-04-09
+  unit_price: 9.99
+  unit_type: MyString
+
+two:
+  product_code: MyString
+  product_version: 1
+  product_name: MyString
+  reorder_level: 9.99
+  is_enabled: false
+  effective_date: 2013-04-09
+  unit_price: 9.99
+  unit_type: MyString

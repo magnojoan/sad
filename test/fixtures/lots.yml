@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lot_no: MyString
+  product_id: 1
+  expiry_date: 2013-04-09
+  inventory_status: MyString
+  quantity: 1
+  lot_cost: 9.99
+  unit_cost: 9.99
+
+two:
+  lot_no: MyString
+  product_id: 1
+  expiry_date: 2013-04-09
+  inventory_status: MyString
+  quantity: 1
+  lot_cost: 9.99
+  unit_cost: 9.99

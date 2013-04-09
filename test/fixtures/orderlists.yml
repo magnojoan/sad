@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  orderlist_code: 1
+  order_id: 1
+  lot_id: 1
+  quantity: 1
+  tin_no: MyString
+  net_amount: 9.99
+
+two:
+  orderlist_code: 1
+  order_id: 1
+  lot_id: 1
+  quantity: 1
+  tin_no: MyString
+  net_amount: 9.99
