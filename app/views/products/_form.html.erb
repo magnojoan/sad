@@ -4,7 +4,7 @@
   <%= f.input :reorder_level,  :as => :decimal %>
   <%= f.input :effective_date %>
   <%= f.input :unit_price, :as => :decimal %>
-  <%= f.input :unit_type %>
+  <%= f.input :unit_type, :as => :select, :label => "Unit Type:", :include_blank => false, :collection => ["Boxes", "Bottles"] %>
     <%= f.input :product_version, :as => :hidden %>
     <%= f.input :is_enabled, :as => :hidden %>
 

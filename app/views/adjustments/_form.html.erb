@@ -1,0 +1,8 @@
+<%= simple_form_for(adjustment) do |f| %>
+   <%= f.input :price_difference_type, :as => :select, :label => "Unit Type:", :include_blank => false, :collection => ["Senior Citizen Discount", "Returns", "Discounts"] %>
+  <%= f.input :difference_amount,  :as => :decimal %>
+    <%= f.input :month_in_effect, :label => "Date in effect" %>
+      <%= f.association :product, :as => :select %>
+
+  <%= f.submit "Submit" %>
+<% end %>

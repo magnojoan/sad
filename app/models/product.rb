@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   has_many :lots
   has_many :adjustments
 
-   validates :product_code, :presence => true, :uniqueness => true
+   validates :product_code, :presence => true, :uniqueness => {:case_sensitive => false}
    validates :product_version, :presence => true
    validates :product_name, :presence => true
    validates :reorder_level, :presence => true, :numericality => true
@@ -12,5 +12,8 @@ class Product < ActiveRecord::Base
    validates :unit_price, :presence => true, :numericality => true
    validates :unit_type, :presence => true
 
+	def to_s
+		product_name
+	end
 
 end

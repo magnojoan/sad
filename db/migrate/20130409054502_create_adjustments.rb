@@ -1,7 +1,6 @@
 class CreateAdjustments < ActiveRecord::Migration
   def change
     create_table :adjustments do |t|
-      t.integer :entry_id
       t.integer :product_id
       t.string :price_difference_type
       t.decimal :difference_amount

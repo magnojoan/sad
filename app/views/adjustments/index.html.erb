@@ -1,0 +1,34 @@
+<div class="page-header">
+<h1>Adjustments</h1>
+<ul class="nav nav-list">
+  <li>  <%= link_to "Back to Home", root_path %> </li>
+  <li><%= link_to "Add Adjustment", new_adjustment_path %></li>
+</ul>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Price Difference Type</th>
+      <th>Difference Amount</th>
+      <th>Month in Effect</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @adjustments.each do |p| %>
+      <tr>
+        <td><%= p.product_id %></td>
+        <td><%= p.price_difference_type %></td>
+        <td><%= p.difference_amount %></td>
+        <td><%= p.month_in_effect %></td>
+        <td>
+          <%= link_to "Edit", edit_adjustment_path(p) %>
+          |
+          <%= link_to "Delete", adjustment_path(p), :method => :delete, :confirm => "Are you sure?" %>
+          
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
