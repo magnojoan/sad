@@ -1,0 +1,12 @@
+<%= simple_form_for(product) do |f| %>
+  <%= f.input :product_code %>
+  <%= f.input :product_name %>
+  <%= f.input :reorder_level %>
+  <%= f.input :effective_date %>
+  <%= f.input :unit_price %>
+  <%= f.input :unit_type %>
+    <%= f.input :product_version, :as => :hidden  %>
+    <%= f.input :is_enabled %>
+
+  <%= f.submit "Submit" %>
+<% end %>
