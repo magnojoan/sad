@@ -15,5 +15,8 @@ class Product < ActiveRecord::Base
 	def to_s
 		product_name
 	end
-
+  before_save :add_version
+def add_version
+    product_version = 1
+  end
 end
