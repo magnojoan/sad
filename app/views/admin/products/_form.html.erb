@@ -5,8 +5,8 @@
   <%= f.input :effective_date %>
   <%= f.input :unit_price %>
   <%= f.input :unit_type, :as => :select, :label => "Unit Type:", :include_blank => false, :collection => ["Boxes", "Bottles"] %>
-    <%= f.input :product_version, :as => :hidden %>
-    <%= f.input :is_enabled, :as => :hidden %>
+    <%= f.input :product_version, :as => :hidden, :wrapper_html => { :style => "display:none;" } %>
+    <%= f.input :is_enabled, :as => :hidden, :wrapper_html => { :style => "display:none;" } %>
 
   <%= f.submit "Submit" %>
 <% end %>

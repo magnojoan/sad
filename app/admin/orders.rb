@@ -14,6 +14,8 @@ ActiveAdmin.register Order do
       end
       active_admin_comments
     end
+        index :download_links => [:pdf]
+
 
 
 
