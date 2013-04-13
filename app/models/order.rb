@@ -5,4 +5,9 @@ class Order < ActiveRecord::Base
   has_many :lots, :through => :orderlists
   has_many :orderlists
 #Order.where('orders.date = ?', date)
+
+	def to_s
+	invoice_no
+	end
+
 end

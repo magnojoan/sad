@@ -4,4 +4,9 @@ class Lot < ActiveRecord::Base
   belongs_to :product
   has_many :orderlists
   has_many :orders, :through => :orderlists
+
+  def to_s
+  	lot_no
+  end
+
 end

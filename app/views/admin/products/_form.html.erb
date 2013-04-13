@@ -1,0 +1,14 @@
+<%= semantic_form_for [:admin, @product] do |f| %>
+  <%= f.input :product_code  %>
+  <%= f.input :product_name %>
+  <%= f.input :reorder_level %>
+  <%= f.input :effective_date %>
+  <%= f.input :unit_price %>
+  <%= f.input :unit_type, :as => :select, :label => "Unit Type:", :include_blank => false, :collection => ["Boxes", "Bottles"] %>
+    <%= f.input :product_version, :as => :hidden %>
+    <%= f.input :is_enabled, :as => :hidden %>
+
+  <%= f.submit "Submit" %>
+<% end %>
+
+ 
