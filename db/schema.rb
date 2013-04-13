@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130413040003) do
 
   create_table "deliveryaddresses", :force => true do |t|
     t.string   "delivery_address"
+    t.integer  "customer_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
