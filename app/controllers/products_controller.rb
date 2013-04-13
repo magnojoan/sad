@@ -40,8 +40,6 @@ class ProductsController < ApplicationController
     @newProduct.product_version+=1
     if @newProduct.save
       redirect_to products_path
-    else
-      render :new
     end
   end
 
