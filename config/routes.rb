@@ -11,6 +11,4 @@ Asis::Application.routes.draw do
 
   match "/products/:id", :to => "products#disable"
 
-  root to: "pages#index"
-
 end

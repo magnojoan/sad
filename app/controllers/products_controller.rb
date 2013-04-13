@@ -36,10 +36,12 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @newProduct = Product.create(params[:product])
-    @newProduct.product_version+=1
-    if @newProduct.save
+    @product = Product.create(params[:product])
+    @product.product_version+=1
+    if @product.save
       redirect_to products_path
+    else
+      render :new
     end
   end
 
