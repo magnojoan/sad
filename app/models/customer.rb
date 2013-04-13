@@ -6,4 +6,9 @@ class Customer < ActiveRecord::Base
 
 	has_many :deliveryaddresses 
 	has_many :orders
+
+	def to_s
+		customer_name
+	end
+
 end
