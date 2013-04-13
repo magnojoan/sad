@@ -4,10 +4,8 @@ class Order < ActiveRecord::Base
   belongs_to :customer
   has_many :lots, :through => :orderlists
   has_many :orderlists
-#Order.where('orders.date = ?', date)
 
 	def to_s
 	invoice_no
 	end
-
 end

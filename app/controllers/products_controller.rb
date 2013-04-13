@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(params[:product])
-    @product.product_version = 1
+    #@product.product_version = 1
     @product.is_enabled = true
     if @product.save
       redirect_to admin_products_path
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.create(params[:product])
-    @product.product_version+=1
+    #@product.product_version+=1
     if @product.save
       redirect_to products_path
     else

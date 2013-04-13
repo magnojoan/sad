@@ -15,8 +15,15 @@ class Product < ActiveRecord::Base
 	def to_s
 		product_name
 	end
+
   before_save :add_version
+
 def add_version
-    product_version = 1
-  end
+    # since you're creating a new product record even on update
+    self.id = nil
+    previous_product_version = Product.first # or Product.last. I forgot. lol
+    self.product_version = previous_product_version + 1
+end
+
+
 end
