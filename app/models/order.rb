@@ -6,6 +6,7 @@ class Order < ActiveRecord::Base
   has_many :orderlists
 
 	def to_s
-	invoice_no
+"#{invoice_no}"
 	end
 end
+

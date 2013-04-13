@@ -10,14 +10,8 @@ ActiveAdmin.register Order do
         row :total
         row :vatable_amount
         
-   row :actions do
-            link_to "Add Order List", admin_order_orderlists_path(order) 
-        end
+        li link_to("Add orderlist", admin_order_orderlists_path(order))
+     end
 
               end
-      active_admin_comments
     end
-
-
-
-end
