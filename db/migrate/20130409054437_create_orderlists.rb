@@ -1,7 +1,6 @@
 class CreateOrderlists < ActiveRecord::Migration
   def change
     create_table :orderlists do |t|
-      t.integer :orderlist_code
       t.integer :order_id
       t.integer :lot_id
       t.integer :quantity
