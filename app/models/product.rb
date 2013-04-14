@@ -15,18 +15,22 @@ class Product < ActiveRecord::Base
 		product_name
 	end
 
-  before_save :add_version
+  before_save :add_version, :enableToTrue
+
+  def enableToTrue
+    self.is_enabled = true    
+  end
 
 def add_version
-   
-    check = Product.first
-    if check.blank?
-      self.product_version = 1
-    else
-    previous_product_version = Product.first.product_version
-    self.product_version = previous_product_version + 1
-  end
+if Product.where(["product_code = ?", product_code]).last.blank?
+self.product_version = 1
+else
+self.id = nil
+previous_product_version = Product.where(["product_code = ?", product_code]).last.product_version
+self.product_version = previous_product_version + 1
 end
+end
+
 
 
 end
