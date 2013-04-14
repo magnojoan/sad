@@ -16,13 +16,12 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.is_enabled = !@product.is_enabled
     if @product.update_attributes(params[:product])
-      redirect_to products_path
+      redirect_to admin_products_path
     end
   end
 
   def create
     @product = Product.create(params[:product])
-    #@product.product_version = 1
     @product.is_enabled = true
     if @product.save
       redirect_to admin_products_path
@@ -36,19 +35,18 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.create(params[:product])
-    #@product.product_version+=1
-    if @product.save
-      redirect_to products_path
+      @product = Product.find(params[:id])
+    if @product.update_attributes(params[:product])
+      redirect_to admin_products_path
     else
-      render :new
+      render :edit
     end
   end
 
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to products_path
+    redirect_to admin_products_path
   end
     
 end
