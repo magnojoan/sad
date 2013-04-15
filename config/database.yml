@@ -6,7 +6,7 @@
 # Ensure the MySQL gem is defined in your Gemfile
 #   gem 'mysql2'
 #
-# And be sure to use new-style password hashing:
+# And be sure to use new-style password  roothashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   adapter: mysql2
@@ -15,8 +15,9 @@ development:
   database: asis_development
   pool: 5
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: root
+  socket: /var/run/mysqld/mysqld.sock
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,8 +29,9 @@ test:
   database: asis_test
   pool: 5
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: root
+  socket: /var/run/mysqld/mysqld.sock
+
 
 production:
   adapter: mysql2
@@ -38,5 +40,6 @@ production:
   database: asis_production
   pool: 5
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: root
+  socket: /var/run/mysqld/mysqld.sock
+

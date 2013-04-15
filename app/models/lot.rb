@@ -5,8 +5,11 @@ class Lot < ActiveRecord::Base
   has_many :orderlists
   has_many :orders, :through => :orderlists
 
+
+
   def to_s
   	lot_no
   end
+
 
 end

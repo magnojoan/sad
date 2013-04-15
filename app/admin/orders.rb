@@ -1,6 +1,19 @@
 ActiveAdmin.register Order do
   
+  form do |f|
+      f.inputs "Details" do
+        f.input :customer
+        f.input :invoice_no
+        f.input :purchase_order_no 
+        f.input :date, :hint => "Date of order"
+        f.input :terms, :hint => "Terms of the Transaction"
+      end
+      f.actions
+    
+  end
+
   index do |order|
+    selectable_column
     column :purchase_order_no
     column "Date of Sale", :date
     column "Net Amount", :total

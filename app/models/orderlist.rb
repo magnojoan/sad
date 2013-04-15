@@ -16,6 +16,11 @@ class Orderlist < ActiveRecord::Base
   	o.subtotal += quantity
   	o.vatable_amount = o.subtotal*0.12
   	o.total = o.subtotal + o.vatable_amount
-  	o.save
+  	
+
+    self.net_amount = self.lot.unit_cost * self.quantity
+    o.save
   end
+
+
 end
