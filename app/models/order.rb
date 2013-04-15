@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
 
   belongs_to :customer
   has_many :lots, :through => :orderlists
-  has_many :orderlists
+  has_many :orderlists, dependent: :restrict
 
 	def to_s
 "#{invoice_no}"

@@ -2,16 +2,17 @@ class Product < ActiveRecord::Base
   attr_accessible :effective_date, :is_enabled, :product_code, :product_name, :product_version, :reorder_level, :unit_price, :unit_type, :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
-  has_many :lots
-  has_many :adjustments
+  has_many :lots, dependent: :restrict
+  has_many :adjustments, dependent: :restrict
 
-   validates :product_code, :presence => true
+   validates :product_code, :presence => true, :uniqueness => { case_sensitive: true }
    validates :product_name, :presence => true
    validates :reorder_level, :presence => true, :numericality => true
    validates :effective_date, :presence => true
    validates :unit_price, :presence => true, :numericality => true
    validates :unit_type, :presence => true
 validates_attachment :avatar, :content_type => { :content_type => ["image/jpg", "image/png", "image/jpeg"] } 
+
 
 	def to_s
 		product_name

@@ -1,6 +1,5 @@
 ActiveAdmin.register Product do    
 
-
   scope :all, :default => true
   scope :enabled do |products|
     products.where(:is_enabled => true)
@@ -23,6 +22,40 @@ ActiveAdmin.register Product do
  #  end
 # end
 
+show do |product|
+      attributes_table do
+        row :product_code
+        row :product_name
+        row :reorder_level
+        row :effective_date
+        row :unit_price
+        row :unit_type
+        row :avatar do
+          image_tag(product.avatar.url(:medium))
+        end
+      end
+      active_admin_comments
+    end
+
+
+
+index do
+
+div do
+ h5 "You may add or edit products here. Adding a new product with the same code will add a new version of that product."
+
+end
+  selectable_column
+  column :product_code
+  column :product_version
+  column :product_name
+  column :unit_price
+  column "Image" do |product|
+    image_tag(product.avatar.url(:thumb))
+  end
+  actions
+  end
+
 
     form do |f|
       f.inputs "Details" do
@@ -31,7 +64,7 @@ ActiveAdmin.register Product do
         f.input :reorder_level, :hint => "Quantity of lots that will alert the user to order more"
         f.input :effective_date, :hint => "Date that the product will get in effect"
         f.input :unit_price, :hint => "Unit price of the product"
-        f.input :unit_type, :as => :select, :label => "Unit Type:", :include_blank => false, :collection => ["Boxes", "Bottles"] 
+        f.input :unit_type, :as => :select, :label => "Unit Type:", :include_blank => false, :collection => ["Boxes", "Bottles", "Vials"] 
         f.input :product_version, :as => :hidden, :wrapper_html => { :style => "display:none;" }
 		    f.input :is_enabled, :as => :hidden, :wrapper_html => { :style => "display:none;" }
         f.input :avatar
