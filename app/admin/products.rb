@@ -9,17 +9,20 @@ ActiveAdmin.register Product do
     products.where(:is_enabled => false)
   end
 
- index :as => :grid do |product|
-    div do
-      a :href => admin_product_path(product) do
-        image_tag(product.avatar.url(:thumb))
-      end
-    ul do
-      a truncate(product.product_name), :href => admin_product_path(product)
-      li number_to_currency product.unit_price
-    end
-  end
-end
+ # index :as => :grid do |product|
+ #    div do
+ #      a :href => admin_product_path(product) do
+ #        image_tag(product.avatar.url(:thumb))
+ #      end
+ #    ul do
+ #      "Hello"
+ #      a truncate(product.product_name), :href => admin_product_path(product)
+ #      li number_to_currency product.unit_price
+ #      li product.is_enabled
+ #  end
+ #  end
+# end
+
 
     form do |f|
       f.inputs "Details" do
@@ -35,13 +38,19 @@ end
       end
       f.actions
     end
-   
-      member_action :disable, :method => :put do
-      product = Product.find(params[:id])
-      product.is_enabled = !product.is_enabled
-      redirect_to :action => :show
-    end
+    
+      batch_action :enable do |selection|
+        Product.find(selection).each do |a|
+          a.is_enabled = true
+                  a.save
+        end
+ redirect_to :back    end
 
-
+  batch_action :disable do |selection|
+        Product.find(selection).each do |a|
+          a.is_enabled = false
+          a.save
+        end
+ redirect_to :back    end
 
   end  

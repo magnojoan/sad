@@ -17,8 +17,7 @@ validates_attachment :avatar, :content_type => { :content_type => ["image/jpg", 
 		product_name
 	end
 
-  before_create :add_version
-  before_save :enableToTrue
+  before_create :add_version, :enableToTrue
 
   def enableToTrue
     self.is_enabled = true    
