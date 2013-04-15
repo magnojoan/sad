@@ -1,4 +1,13 @@
 ActiveAdmin.register Order do
+  
+  index do |order|
+    column :purchase_order_no
+    column "Date of Sale", :date
+    column "Net Amount", :total
+    column :invoice_no
+    default_actions
+  end
+
   show do |order|
       attributes_table do
         row :customer_id
@@ -13,5 +22,40 @@ ActiveAdmin.register Order do
         li link_to("Add orderlist", admin_order_orderlists_path(order))
      end
 
-              end
+    panel "Orderlists" do 
+      table do
+        tr do 
+          th "Code"
+          th "Product"
+          th "Expiry Date"
+          th "Unit Price"
+          th "Lot Number"
+          th "Quantity"
+          th "Net Amount"
+          end
+        order.orderlists.each do |x|
+        tr do      
+            
+             td x.id
+             td x.lot.product.product_name
+             td x.lot.expiry_date
+             td x.lot.product.unit_price
+             td x.lot.lot_no
+             td x.quantity
+             td x.net_amount
+          end
+
+
+                  end
+        end
+end
+end
+
+
+  
+
+   
+ 
+
+
     end
