@@ -24,7 +24,7 @@ ActiveAdmin.register Lot do
 	  	column :quantity
 	  	column :inventory_status
 	  	column "Added On", :created_at
-		default_actions
+		  default_actions
   	end
 
   	form do |f|

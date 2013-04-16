@@ -4,7 +4,7 @@ class Return < Adjustment
 belongs_to :orderlist
 
 def turntostring
-    "#{price_difference_type} - #{product_id} - #{difference_amount}"
+    "#{price_difference_type} - #{difference_amount}"
   end
   
 end

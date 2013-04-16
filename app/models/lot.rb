@@ -17,12 +17,13 @@ class Lot < ActiveRecord::Base
   	lot_no
   end
 
-  before_create :checkStatus
+  after_save :docheck
 
-  def checkStatus
-    
+  def docheck
+    if self.expiry_date < DateTime.now
+      self.inventory_status == "Expired"
+    end
   end
-
 
   def get_unit_cost
   	self.unit_cost = self.product.unit_price
