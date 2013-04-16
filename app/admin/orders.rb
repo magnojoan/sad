@@ -8,6 +8,22 @@ ActiveAdmin.register Order do
         f.input :date, :hint => "Date of order"
         f.input :terms, :hint => "Terms of the Transaction"
       end
+
+      f.has_many :orderlists do |ol_f|
+  
+        ol_f.inputs "Details" do
+    
+        ol_f.input :lot
+        ol_f.input :quantity
+        ol_f.input :tin_no, :label => "TIN No"
+    
+
+      end
+
+
+
+    end
+
       f.actions
     
   end
@@ -16,7 +32,7 @@ ActiveAdmin.register Order do
     selectable_column
     column :purchase_order_no
     column "Date of Sale", :date
-    column "Net Amount", :total
+    column "Total Amount", :total
     column :invoice_no
     default_actions
   end
@@ -27,13 +43,18 @@ ActiveAdmin.register Order do
         row :date
         row :invoice_no
         row :purchase_order_no
-        row :subtotal
         row :terms
-        row :total
-        row :vatable_amount
+#        row :subtotal
+#        row :vatable_amount
+#        row :total
+
+
+   
         
-        li link_to("Add orderlist", admin_order_orderlists_path(order))
+   
      end
+
+
 
     panel "Orderlists" do 
       table do
@@ -49,19 +70,75 @@ ActiveAdmin.register Order do
         order.orderlists.each do |x|
         tr do      
             
-             td x.id
+             td x.lot.product.product_code
              td x.lot.product.product_name
              td x.lot.expiry_date
-             td x.lot.product.unit_price
+             td number_with_precision(x.lot.product.unit_price, :precision=>2)
              td x.lot.lot_no
              td x.quantity
-             td x.net_amount
+             td number_with_precision(x.net_amount, :precision=>2)
           end
 
 
                   end
         end
 end
-end
+
+
+
+  panel "Totals" do 
+         table do
+          tr do
+              td "TOTAL SALES"
+              if order.subtotal.nil?
+              td ""
+              else
+              td "PHP " + number_with_precision(order.subtotal, :precision=>2)
+              end
+              td
+              td
+              td
+              td
+              td
+              
+          end
+          tr do
+            td "ADD 12% VAT"
+             if order.subtotal.nil?
+              td ""
+              else
+              td "PHP " + number_with_precision(order.vatable_amount, :precision=>2)
+              end
+            td
+            td
+            td
+            td
+              td
+          end
+
+          tr do
+              td "TOTAL AMOUNT"
+               if order.subtotal.nil?
+              td ""
+              else
+              td "PHP " + number_with_precision(order.total, :precision=>2)
+              end
+              td
+              td
+              td
+              td
+              td
+          end
+        end
+     end
+
+
+end 
+
+
+   
+    action_item :only => :show do
+      link_to 'Print Invoice', print_path(params[:id]), :target=>"_blank"
+    end
 
     end
