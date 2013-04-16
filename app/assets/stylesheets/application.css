@@ -11,3 +11,56 @@
  *= require_self
  *= require_tree .
  */
+
+#container {
+	height:100%;
+	padding: 30px;
+	
+
+}
+
+#header{
+
+	text-align: center;
+
+}
+
+#secondline{
+	height: 30px;
+
+}
+.left{
+	position: relative;
+	margin-left: 0px;
+	float:left;
+
+}
+.right{
+	position: relative;
+	margin-right: 0px;
+	float:right;
+
+}
+
+.clear{
+	clear:both;
+	height:10px;
+
+}
+
+.block{
+	float:left;
+	width:35%;
+}
+
+.center{
+	margin-left:10%;
+
+}
+
+.smaller{
+	font-size: 9px;
+	line-height: 11px;
+
+}
+

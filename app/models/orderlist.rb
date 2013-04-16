@@ -4,23 +4,26 @@ class Orderlist < ActiveRecord::Base
   belongs_to :order 
   belongs_to :lot
 
-  after_save :pass_values
 
-  def pass_values
-  	o = self.order
-  if o.subtotal = nil
-    o.subtotal = 0
+#  after_save :pass_values
+
+  def net_amount
+    quantity*self.lot.product.unit_price
   end
 
-    o.subtotal = 0
-  	o.subtotal += quantity
-  	o.vatable_amount = o.subtotal*0.12
-  	o.total = o.subtotal + o.vatable_amount
-  	
+#  def pass_values
+#  	o = self.order
+#  if o.subtotal.nil?
+#    o.subtotal = 0
+#  else
+#  	o.subtotal += net_amount
+#  	o.vatable_amount = o.subtotal*0.12
+#  	o.total = o.subtotal + o.vatable_amount  
+#   
+# end
+#  o.save
+#  end
 
-    self.net_amount = self.lot.unit_cost * self.quantity
-    o.save
-  end
 
 
 end

@@ -1,0 +1,115 @@
+<div id = "container">
+
+
+	<div id = "header">
+		<%= image_tag "logo.jpeg" %>
+		<h2> Hi-Eisai Pharmaceutical, Inc. </h2>
+		20/F Multinational Bancorporation Center<br>
+		6805 Ayala Avenue, Makati City 1226<br>
+		Tel. # 887-10-47 | Fax # 887-51-72<br>
+		TIN 000-160-852-000-VAT
+	</div>
+
+	<div id = "secondline">
+			<div class="left">
+				<h4>Sales Invoice</h4>
+			</div>
+			<div class="right">
+				<h4>No. <%= @order.invoice_no %></h4>
+			</div>
+	</div>
+	<div class="clear"></div>
+	
+	<div class ="block">
+		<b>SOLD TO</b> &emsp;<%= @order.customer.customer_name %><br>
+		<b>ADDRESS</b>  &emsp;<%= @order.customer.customer_address %><br>
+		<b>DELIVERY ADDRESS</b>  &emsp;<%= @order.customer.customer_address %>
+
+	</div>
+	<div class ="block">
+		<b>TIN</b> &emsp;<%= @order.orderlists.first.tin_no %><br>
+		<b>PO No</b> &emsp;<%= @order.purchase_order_no %>
+
+	</div>
+	<div class="right">
+		<b>DATE</b> &emsp;<%= @order.date %><br>
+		<b>PREPARED BY</b> &emsp;____________________<br>
+		<b>APPROVED BY</b> &emsp;____________________
+	</div>
+
+	<div class="clear"></div>
+	<div class="clear"></div>
+	<div class="clear"></div>
+
+	<table border = "1px solid" width="100%">
+		<tr>
+			<th width="10%"> <b>Code</b> </th>
+			<th width="27%"> <b>Products</b> </th>
+			<th width="10%"> <b>Qty</b> </th>
+			<th width="10%"> <b>Unit Price</b> </th>
+			<th width="10%"> <b>Lot No.</b> </th>
+			<th width="13%"> <b>Expiry Date</b> </th>
+			<th width="20%"> <b>Net Amount</b> </th>
+		</tr>
+		<% @order.orderlists.each do |x| %>
+		<tr>
+			<td align="center"><%=x.lot.product.product_code%></td>
+			<td><%=x.lot.product.product_name%></td>
+			<td align="center"><%=x.quantity%> <%=x.lot.product.unit_type%></td>
+			<td align="right">PHP <%=number_with_precision(x.lot.product.unit_price, :precision => 2)%></td>
+			<td align="center"><%=x.lot%></td>
+			<td align="center"><%=x.lot.expiry_date%></td>
+			<td align="right">PHP <%=number_with_precision(x.net_amount, :precision => 2)%></td>
+		
+		</tr>
+
+		<% end %>
+		
+		
+	</table>
+
+	<table class="right">
+		<tr>
+		
+			<td width="100px" align="right"><b>TOTAL SALES<br>ADD 12%  VAT<br>TOTAL AMT</b></td>
+			<td width="200px" align="right">PHP <%= number_with_precision(@order.subtotal, :precision => 2) %><br>
+				PHP <%= number_with_precision(@order.vatable_amount, :precision => 2) %><br>
+				PHP <%= number_with_precision(@order.total, :precision => 2) %>
+			</td>
+		</tr>
+	</table>
+	
+	<div class ="clear"></div>
+	<div class ="clear"></div>
+	<div class ="clear"></div>
+
+	<table width="100%"  border="solid 1px">
+		<tr>
+			<th> Issued </th>
+			<th> Date </th>
+			<th> Delivered by </th>
+			<th> Date </th>
+			<th width="30%"> Received by </th>
+			<th> Date </th>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>&emsp;[ ] Others<br>&emsp;[ ] M.R.<br>&emsp;[ ] Carrier></td>
+			<td></td>
+			<td align="center"><br>___________________________________<br>Customer signature over printed name</td>
+			<td></td>
+		</tr>
+	</table>
+
+	<div class="smaller">
+IMPORTANT: Hi-Eisai Pharmaceutical, Inc. shall be relieved from any liability whatsoever for loss or damage of the goods stated herein due to whatever cause after goods have been delivered to carrier of the buyer. Only payments covered by company's Official Receipt shall be honored.<br>
+TERMS: Seller shall have First lien on and shall have the right of possession on all goods sold on account until purchase price has been fully paid. All overdue accounts shall bear interest of 12% per annum until date of payments. An additional 25% of the whole amount due shall further be charged by the seller for attorney's fees and collection cost should it become necessary to bring action in court to recover this amount. Action under this contract may be brought in the proper court of the City of Manila, any other venue being expressly waived.<br><br>
+20 Bklts, (50x6) SN 42251-43250 BIR Authority No. OCN 9AU0000366315 01/06/2009<br>
+OCP TYPESETTING AND PRINTING SERVICES<br>
+1766 Dumas St., La Paz, Makati City
+</div>
+	
+
+
+</div>

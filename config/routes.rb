@@ -10,5 +10,6 @@ Asis::Application.routes.draw do
   resources :customers
 
   match "/products/:id", :to => "products#disable"
+  match "/orders/print/:id", :to => "reports#print", :as => :print
 
 end
