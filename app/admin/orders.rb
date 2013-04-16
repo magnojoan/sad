@@ -1,5 +1,5 @@
-ActiveAdmin.register Order do
-  
+ActiveAdmin.register Order do 
+
   form do |f|
       f.inputs "Details" do
         f.input :customer
@@ -63,12 +63,5 @@ ActiveAdmin.register Order do
         end
 end
 end
-
-
-  
-
-   
- 
-
 
     end

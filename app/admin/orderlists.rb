@@ -1,4 +1,5 @@
 ActiveAdmin.register Orderlist do
+
    belongs_to :order 
    form do |f|
       f.inputs "Details" do

@@ -1,5 +1,5 @@
 class Return < Adjustment
-	attr_acessible  :quantity_returned, :orderlist_id
+	attr_accessible  :quantity_returned, :orderlist_id
 
-	has_many :orderlists
+belongs_to :orderlist
 end

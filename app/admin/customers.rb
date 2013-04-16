@@ -1,4 +1,5 @@
 ActiveAdmin.register Customer do
+
   index do
  	column :customer_name
   	column :customer_address
