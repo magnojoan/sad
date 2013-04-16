@@ -7,4 +7,12 @@ class Adjustment < ActiveRecord::Base
   validates :month_in_effect, :presence => true
 
   belongs_to :product
+
+  def to_s
+		turntostring
+	end
+
+def turntostring
+    "#{price_difference_type} - #{product_id} - #{difference_amount}"
+  end
 end

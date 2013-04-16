@@ -15,7 +15,7 @@ end
 	form do |f|
       f.inputs "Returns" do
         f.input :orderlist, :hint => "The identifying code of the orderlist"
-  	f.input :price_difference_type, :as => :select, :label => "Difference Type:", :include_blank => false, :collection => ["Sales Returns", "Senior Citizen's Discount", "Sales Discounts"] 
+  	 f.input :price_difference_type, :as => :select, :label => "Difference Type:", :include_blank => false, :collection => ["Sales Returns", "Senior Citizen's Discount", "Sales Discounts"] 
         f.input :difference_amount, :hint => "The difference made by the adjustments to the price" 
         f.input :month_in_effect, :hint => "Month wherein the adjusting entry will take effect"
       	f.input :quantity_returned, :hint => "Returned amount"

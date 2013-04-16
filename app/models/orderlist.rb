@@ -24,6 +24,12 @@ class Orderlist < ActiveRecord::Base
 #  o.save
 #  end
 
+  def to_s
+		turntostring
+	end
 
+def turntostring
+    "Lot: #{lot_id} - ID: #{product_id} - #{quantity}"
+  end
 
 end
