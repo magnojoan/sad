@@ -4,7 +4,7 @@ class Orderlist < ActiveRecord::Base
   belongs_to :order 
   belongs_to :lot
 
-before_save :updateLots
+before_validation :updateLots
 before_destroy :updateDeleteLots
     validates :lot_id,  :presence => true
     validates :quantity,  :presence => true
@@ -42,7 +42,7 @@ def updateLots
         self.lot.quantity = self.lot.quantity - self.quantity
           self.lot.save
   else
-    return false
+    self.lot = nil
   end
 end
 

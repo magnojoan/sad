@@ -7,6 +7,10 @@ class Order < ActiveRecord::Base
   has_many :orderlists, dependent: :restrict
   accepts_nested_attributes_for :orderlists, :allow_destroy => true
 
+  validates :customer_id,  :presence => true
+    validates :date,  :presence => true
+  validates :invoice_no,  :presence => true
+    validates :purchase_order_no,  :presence => true
 
 	def to_s
 "#{invoice_no}"
