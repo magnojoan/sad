@@ -3,8 +3,10 @@ class Order < ActiveRecord::Base
 
   belongs_to :customer
   has_many :lots, :through => :orderlists
-  has_many :orderlists
+
+  has_many :orderlists, dependent: :restrict
   accepts_nested_attributes_for :orderlists, :allow_destroy => true
+
 
 	def to_s
 "#{invoice_no}"
